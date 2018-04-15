@@ -1,0 +1,25 @@
+<html !DOCTYPE>
+  <head>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>Hello Home</h1>
+    <script>
+      $.getJSON( "/todos", function( data ) {
+          var items = [];
+          $.each( data, function( key, val ) {
+            for(var i = 0; i < val.length; i++){
+              items.push( "<li id='" + key + "'>" + val[i].text + "</li>" );
+            }
+          });
+          $( "<ul/>", {
+            "class": "todo-list",
+            html: items.join("")
+          }).appendTo( "body" );
+        });
+    </script>
+  </body>
+</html>
