@@ -17,6 +17,7 @@ describe('POST /todos', () => {
     request(app)
       .post('/todos')
       .send({text})
+      .set('x-auth',users[0].tokens[0].token)
       .expect(200)
       .expect((res) => {
         expect(res.body.text).toBe(text);
@@ -38,6 +39,7 @@ describe('POST /todos', () => {
     request(app)
       .post('/todos')
       .send({})
+      .set('x-auth',users[0].tokens[0].token)
       .expect(400)
       .end((err, res) => {
         if (err) {
@@ -56,9 +58,10 @@ describe('GET /todos', () => {
   it('should get all todos', (done) => {
     request(app)
       .get('/todos')
+      .set('x-auth',users[0].tokens[0].token)
       .expect(200)
       .expect((res) => {
-        expect(res.body.todos.length).toBe(2);
+        expect(res.body.todos.length).toBe(1);
       })
       .end(done);
   });
@@ -236,6 +239,55 @@ describe('POST /users' , () => {
   });
 });
 
+describe('POST users/login', () => {
+    it('should login user and return auth token', (done) => {
+        request(app)
+          .post('/users/login')
+          .send({
+            email:users[1].email,
+            password:users[1].password
+          })
+          .expect(200)
+          .expect((res) => {
+            expect(res.headers['x-auth']).toExist();
+          })
+          .end((err,res) => {
+            if(err){
+              return done(err);
+            }
+
+            User.findById(users[1]._id).then((user) => {
+                expect(user.tokens[0]).toInclude({
+                  access:'auth',
+                  token: res.header['x-auth']
+                });
+                done();
+            }).catch((e) => done(e));
+          });
+    });
+
+    it('should reject invalid login', (done) => {
+      request(app)
+        .post('/users/login')
+        .send({
+          email: users[1].email,
+          password: users[1].email + '1'
+        })
+        .expect(400)
+        .expect((res) => {
+          expect(res.headers['x-auth']).toNotExist();
+        })
+        .end((err,res) => {
+          if(err){
+            return done(err);
+          }
+          User.findById(users[1]._id).then((user) => {
+            expect(user.tokens.lentgh).toBe(0);
+            done();
+          }).catch((e) => done());
+        });
+    });
+});
 
 describe('DELETE users/me/token', () => {
   it('should remove auth token on logout', (done) => {
@@ -252,7 +304,5 @@ describe('DELETE users/me/token', () => {
           done();
         }).catch((e) => done(e));
       })
-
-
   });
 });
