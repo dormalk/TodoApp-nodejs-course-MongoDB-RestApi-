@@ -6,20 +6,6 @@
   crossorigin="anonymous"></script>
   </head>
   <body>
-    <h1>Hello Home</h1>
-    <script>
-      $.getJSON( "/todos", function( data ) {
-          var items = [];
-          $.each( data, function( key, val ) {
-            for(var i = 0; i < val.length; i++){
-              items.push( "<li id='" + key + "'>" + val[i].text + "</li>" );
-            }
-          });
-          $( "<ul/>", {
-            "class": "todo-list",
-            html: items.join("")
-          }).appendTo( "body" );
-        });
-    </script>
+    <h1>Welcome Home</h1>
   </body>
 </html>
