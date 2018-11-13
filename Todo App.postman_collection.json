@@ -1,0 +1,218 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Todo App",
+		"_postman_id": "abc3bfa8-a4da-f43b-a0b8-824c651386a6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET /todos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"{",
+							"    ",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/todos/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\":\"This is some todos from postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /todos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"{",
+							"    ",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/todos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWQ4ZjRlNDM5YzkxNTAwMTRiOTYyOGMiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTI0MTY3OTA4fQ.IZmtPlbWb2nOAcR-h4R6hQr8bUvY1XTEc7lbSIOfStM",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\":\"This is some todos from postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /todos/:id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"{",
+							"    ",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/todos/5acda1262e2239141835be52",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\":\"This is some todos from postman\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /todos/:id",
+			"request": {
+				"url": "{{url}}/todos/5acda5de5b6071001497703a",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"completed\": false\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /users",
+			"request": {
+				"url": "{{url}}/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"dormalk@gmail.com\",\n\t\"password\":\"abc!123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /users/me",
+			"request": {
+				"url": "{{url}}/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWQ4ZjRlNDM5YzkxNTAwMTRiOTYyOGMiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTI1MzUwNTY5fQ.UPC6Y6gK6gJ6VKm_oxXJ8slm3RJJdKe-O9-GGJmJjeo",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"dormalk@gmail.com\",\n\t\"password\":\"123456\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELTE /users/me/token",
+			"request": {
+				"url": "{{url}}/users/me/token",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWQzNWI5NzQ4YmJjOTEyNDRmYWNkYmQiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTIzODAwOTg0fQ.KYMPUBuzA88rpVjEy6FqqZw-vAbg-ziy0uZpwqJaOpU",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /users/login",
+			"request": {
+				"url": "{{url}}/users/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"dormalk@gmail.com\",\n\t\"password\":\"abc!123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
