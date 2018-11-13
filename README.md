@@ -1,7 +1,7 @@
 ﻿# TodoApp-nodejs-course-MongoDB-RestApi
   Implement RestApi for ToDo App. 
 ## Implementation
-  ### Node.js -
+  #### Node.js
   - Users Api \
       POST: /users - If not ragistered, create new user record on Mongo \
       GET: /users/me - Return json for login user include: id, email \
@@ -15,9 +15,9 @@
       PATCH: /todos/:id - Update specific Todo record by his id 
   - Middleware \
       authenticate.js - Used to private route for RestApi. compare x-auth to user uniq token.
-  ### MongoDB
+  #### MongoDB
   Holds two sets of data: Todos and Users
-  ### Tests
+  #### Tests
   Used 'supertest' and 'expect' libreries \
   'Seed' folder - Hold initial instructions for tests.
 ## Get Started(Using Postman)
