@@ -13,7 +13,7 @@
       GET: /todos/:id - Fatch specific Todo record by his id \
       DELTE: /todos/:id - Delete specific Todo record by his id \
       PATCH: /todos/:id - Update specific Todo record by his id 
-  - Middleware 
+  - Middleware \
       authenticate.js - Used to private route for RestApi. compare x-auth to user uniq token.
   ### MongoDB
   Holds two sets of data: Todos and Users
